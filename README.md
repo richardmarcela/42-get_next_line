@@ -15,8 +15,8 @@ But first, how can I <b>install</b> and <b>run</b> this project?
 
     cc get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>
     
-### Tip! You can use scrpits such as 
+### Tip! You can use scrpits such as:
 
-<a href="https://github.com/Tripouille/gnlTester" target="_blank">Tripouille/gnlTester</a>
+   <a href="https://github.com/Tripouille/gnlTester" target="_blank">Tripouille/gnlTester</a>
         
 and that's basically it! :)
