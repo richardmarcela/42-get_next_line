@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrichard <mrichard@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marcela <marcela@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 20:33:23 by marcela           #+#    #+#             */
-/*   Updated: 2022/11/12 14:34:42 by mrichard         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:33:50 by marcela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,28 @@
 
 //minhas funcoes para:
 //calcular tamanho do array
-size_t	ft_strlen(const char *c)
+size_t	ft_strlen(char *c)
 {
 	size_t	i;
 
 	i = 0;
-	while (c[i] != '\0')
+	if (!c)
+		return (0);
+	while (c[i])
 		i++;
 	return (i);
 }
 
 //encontrar a primeira ocorrencia de um caracter 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	size_t	i;
 
 	i = 0;
+	if (!str)
+		return (NULL);
+	if (c == '\0')
+		return ((char *)&str[ft_strlen(str)]);
 	while (str[i] != c)
 	{
 		if (str[i] == '\0')
@@ -40,30 +46,32 @@ char	*ft_strchr(const char *str, int c)
 }
 
 //juntar strings 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_free_join(char *s, char *buffer)
 {
 	size_t	i;
 	size_t	j;
-	char	*new_str;
-	size_t	len_s1;
-	size_t	len_s2;
+	char	*str;
 
-	if (!s1)
+	if (!s)
+	{
+		s = (char *)malloc(1 * sizeof(char));
+		s[0] = '\0';
+	}
+	if (!s || !buffer)
 		return (NULL);
-	i = 0;
-	j = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	new_str = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (new_str == NULL)
+	str = malloc(sizeof(char) * ((ft_strlen(s) + ft_strlen(buffer)) + 1));
+	if (str == NULL)
 		return (NULL);
-	while (j < len_s1)
-		new_str[i++] = s1[j++];
+	i = -1;
 	j = 0;
-	while (j < len_s2)
-		new_str[i++] = s2[j++];
-	new_str[i] = '\0';
-	return (new_str);
+	if (s)
+		while (s[++i] != '\0')
+			str[i] = s[i];
+	while (buffer[j] != '\0')
+		str[i++] = buffer[j++];
+	str[ft_strlen(s) + ft_strlen(buffer)] = '\0';
+	free(s);
+	return (str);
 }
 
 //essa funcao pega a linha que vou usar dessa vez 
@@ -77,8 +85,8 @@ char	*ft_get_line(char *s)
 		return (NULL);
 	while (s[i] && s[i] != '\n') //enquanto nao acabar s e nao chegar no newline 
 		i++;
-	str = (char *)malloc(sizeof(char) * (i + 2)); //aloco o tamanho da linha ate o primeiro \n ou EOF
-	if (!str) //se o malloc falhar 
+	str = (char *)malloc((i + 2) * sizeof(char)); //aloco o tamanho da linha ate o primeiro \n ou EOF
+	if (!str)
 		return (NULL);
 	i = 0; //volto o i para 0 para comecar a escrever do comeco 
 	while (s[i] && s[i] != '\n') //enquanto tiver algo e for diferente de \n
@@ -91,7 +99,7 @@ char	*ft_get_line(char *s)
 		str[i] = s[i];
 		i++;
 	}
-	str[i] = '\0'; //finalizo com null byte
+	str[i] = '\0';
 	return (str); //retorno a linha 
 }
 
@@ -103,21 +111,21 @@ char	*ft_new_line(char *s)
 	char		*str;
 
 	i = 0;
-	while (s[i] && s[i] != '\n') //enquanto no chega no EOF ou no new line continua avancando no string
+	while (s[i] && s[i] != '\n') //enquanto não chega no EOF ou no new line continua avancando na string
 		i++;
-	if (!s[i])
+	if (!s[i]) //se não existir
 	{
-		free(s);
+		free(s); //limpo o pointer
 		return (NULL);
 	}
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s) - i + 1)); //aloco espaco pro tamanho de s menos i para guardar o que restar dessa leitura mas que nao vai ser usado dessa vez 
-	if (!str) //se o malloc falhar
+	str = (char *)malloc((ft_strlen(s) - i + 1) * sizeof(char)); //aloco espaco pro tamanho de s menos i para guardar o que restar dessa leitura mas que nao vai ser usado dessa vez 
+	if (!str) //se der erro
 		return (NULL);
 	i++; //incluo o \n
-	j = 0; 
+	j = 0;
 	while (s[i]) //enquanto ainda tiver algo no s
 		str[j++] = s[i++]; //guardo no str 
 	str[j] = '\0'; //finalizo com null byte
-	free(s); //limpo s
+	free(s); //limpo s pq já não preciso dele pra nada já que já guardei em outro lugar (str)
 	return (str); //retorno str
 }
