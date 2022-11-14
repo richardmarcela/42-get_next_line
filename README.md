@@ -17,6 +17,6 @@ But first, how can I <b>install</b> and <b>run</b> this project?
     
 ### Tip! You can use scrpits such as 
 
-    <a href="https://github.com/Tripouille/gnlTester">Tripouille/gnlTester</a>
+<a href="https://github.com/Tripouille/gnlTester" target="_blank">Tripouille/gnlTester</a>
         
 and that's basically it! :)
