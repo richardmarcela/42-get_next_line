@@ -8,9 +8,9 @@ and how they are interpreted by a programming language for further analysis.
 But first, how can I <b>install</b> and <b>run</b> this project? 
 
 ### 1 - First things first, you need to include the header:  
-
+```C
     #include "get_next_line.h"
-
+```
 ### Or, in case of bonus, you need to include the header:
 
     #include "get_next_line_bonus.h"
