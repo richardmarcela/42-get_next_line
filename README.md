@@ -12,9 +12,9 @@ But first, how can I <b>install</b> and <b>run</b> this project?
     #include "get_next_line.h"
 ```
 ### Or, in case of bonus, you need to include the header:
-
+```C
     #include "get_next_line_bonus.h"
-  
+```
 ### 2 - To compile, use the source files and the required flag:
 
     cc get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>
