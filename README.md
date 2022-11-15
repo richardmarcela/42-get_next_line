@@ -2,7 +2,7 @@
 
 This is a 42 project. The purpose is to implement the function 
 get_next_line which returns one line at a time from a text file. 
-In this project you'll understand how opened, read and closed in an OS,
+In this project you'll understand how files are opened, read and closed in an OS,
 and how they are interpreted by a programming language for further analysis.
 
 But first, how can I <b>install</b> and <b>run</b> this project? 
