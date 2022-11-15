@@ -5,7 +5,7 @@ get_next_line which returns one line at a time from a text file.
 In this project you'll understand how files are opened, read and closed in an OS,
 and how they are interpreted by a programming language for further analysis.
 
-But first, how can I <b>install</b> and <b>run</b> this project? 
+But first, how can I <b>run</b> this project? 
 
 ### 1 - First things first, you need to include the header:  
 ```C
