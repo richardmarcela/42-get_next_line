@@ -11,7 +11,7 @@ But how can I <b>run</b> this project?
 ```C
 #include "get_next_line.h"
 ```
-### Or, in case of bonus, you need to include the header:
+### Or, in case of bonus, you need to include the header of bonus:
 ```C
 #include "get_next_line_bonus.h"
 ```
