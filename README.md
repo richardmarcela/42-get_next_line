@@ -1,5 +1,7 @@
 # get_next_line
 
+![image](https://user-images.githubusercontent.com/101434516/202159991-adaddef4-8289-4e32-8fe2-c447b73e665e.png)
+
 This is a 42 project. The purpose is to implement the function 
 get_next_line which returns one line at a time from a text file. 
 In this project you'll understand how files are opened, read and closed in an OS,
